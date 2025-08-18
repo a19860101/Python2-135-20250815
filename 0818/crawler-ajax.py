@@ -1,11 +1,15 @@
 import urllib.request as req
-import bs4
-import ssl
-import json
+import ssl,json,os
+import openpyxl
+
+wb = openpyxl.Workbook()
+ws = wb.active
+
+ws.append(['標題','最高價','最低價','評價','評價人數'])
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-url = 'https://www.kkday.com/zh-tw/category/ajax_get_category_product_list?productCategory=CATEGORY_019&keyword=&currency=TWD&sort=prec&page=1&start=0&count=30'
+url = 'https://www.kkday.com/zh-tw/category/ajax_get_category_product_list?productCategory=CATEGORY_019&keyword=&currency=TWD&sort=prec&page=1&start=0&count=20'
 
 header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36'
@@ -26,3 +30,7 @@ for data in json_data['data']['data']:
     print('評論人數',data['rating_count'])
     print('平均',data['rating_star'])
     print('-----------------------------')
+    ws.append([data['name'],data['max_price'],data['min_price'],data['rating_star'],data['rating_count']])
+
+os.makedirs('output',exist_ok=True)
+wb.save('output/kkday.xlsx')
