@@ -1,5 +1,4 @@
 import urllib.request as req
-from os.path import exists
 import os
 import bs4
 import ssl
