@@ -1,5 +1,6 @@
 import requests
 import bs4
+import os
 
 url = 'https://www.ptt.cc/bbs/Gossiping/index.html'
 # url ='https://www.mobile01.com/'
@@ -21,9 +22,12 @@ html = bs4.BeautifulSoup(result, 'html.parser')
 # print(html)
 
 data = html.find_all('div',class_='r-ent')
+os.makedirs('output',exist_ok=True)
 for item in data:
     # print(item.find('div',class_='title').text)
-    title = item.find('div',class_='title').a.text
+    title=''
+    if item.find('div',class_='title').a is not None:
+        title = item.find('div',class_='title').a.text
     date = item.find('div',class_='date').text
     author = item.find('div',class_='author').text
     nrec = ''
@@ -33,3 +37,5 @@ for item in data:
         nrec = '0'
 
     print(title,date,author, nrec)
+    with open('output/ptt.txt','a')as f:
+        f.write(f'{title} {date} {author} {nrec}\n')
