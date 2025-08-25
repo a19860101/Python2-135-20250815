@@ -1,0 +1,36 @@
+import os
+import requests
+import bs4
+from urllib.parse import urljoin
+
+for p in range(3):
+    url = f'https://www.vscinemas.com.tw/film/index.aspx?p={p+1}'
+
+    req = requests.get(url, verify=False)
+
+    print(req)
+
+    data = req.text
+
+    html = bs4.BeautifulSoup(data, 'html.parser')
+
+    # print(html)
+
+    # imgs = html.find_all('img')
+    movielist = html.find('ul',class_='movieList')
+    imgs = movielist.find_all('img')
+    # i=0
+    for i,img in enumerate(imgs):
+        print(img['alt'])
+        src = urljoin(url, img['src'])
+        print(src)
+        _,ext = os.path.splitext(img['src'])
+        img_data = requests.get(src, verify=False)
+
+        os.makedirs('movies', exist_ok=True)
+        # with open(f'movies/{img['alt']}{ext}','wb')as f:
+        #     f.write(img_data.content)
+        with open(f'movies/p{p+1}-{i+1}{ext}','wb')as f:
+            f.write(img_data.content)
+
+        # i+=1
