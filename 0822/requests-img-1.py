@@ -17,8 +17,16 @@ for idx,img in enumerate(imgs):
         img_data = requests.get(img['src'])
         _,ext = os.path.splitext(img['src'])
         print(ext[:4])
-        filename = os.path.basename(img['src'])
-        # os.makedirs('images',exist_ok=True)
+        # 去除某些檔案副檔名後面含有的其他參數
+        ext = ext[:4]
+        # 完整圖片路徑
+        fullname = _+ext
+        # filename = os.path.basename(img['src'])
+
+        # 取得檔名+副檔名
+        filename = os.path.basename(fullname)
+        print(filename)
+        os.makedirs('images',exist_ok=True)
         # with open(f'images/{idx+1}{ext}','wb') as f:
         with open(f'images/{filename}','wb') as f:
             f.write(img_data.content)
