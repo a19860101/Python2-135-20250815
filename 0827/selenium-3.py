@@ -17,9 +17,13 @@ driver.maximize_window()
 
 products = driver.find_elements(By.CLASS_NAME,'product-card')
 
-print(products)
+# print(products)
 
-
+for product in products:
+    # print(product.find_element(By.CLASS_NAME,'product-card__title').text)
+    ptitle = product.find_element(By.CLASS_NAME,'product-card__title').text
+    pprice = product.find_element(By.CLASS_NAME,'product-price').text
+    print(f'{ptitle}:{pprice}')
 
 
 
