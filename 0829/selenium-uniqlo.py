@@ -22,11 +22,16 @@ time.sleep(3)
 
 # time.sleep(3)
 
+newproduct = driver.find_element(By.CSS_SELECTOR, 'img[alt="新品上市"]')
+newproduct.click()
+
+time.sleep(5)
+
 # rank = driver.find_element(By.XPATH,'//*[@id="hmall-container"]/div/div[1]/div[3]/div[2]/div[2]/div/div/div[1]/div/div/div[27]/div/span')
 # rank = driver.find_element(By.XPATH,'//*[@id="hmall-container"]/div/div[1]/div[3]/div[2]/div[2]/div/div/div[2]/div/div/div[26]/div/span')
 # rank.click()
 
 # t = driver.find_element(By.XPATH, '//*[@id="hmall-container"]/div/div[1]/div[3]/div[4]/div[1]/div/div/input')
-t = driver.find_element(By.CSS_SELECTOR, 'input[placeholder="請輸入關鍵字"]')
-t.send_keys('外套',Keys.ENTER)
+# t = driver.find_element(By.CSS_SELECTOR, 'input[placeholder="請輸入關鍵字"]')
+# t.send_keys('外套',Keys.ENTER)
 time.sleep(20)
