@@ -24,6 +24,10 @@ while True:
         print(e)
 
     products = driver.find_elements(By.CLASS_NAME, 'product-card')
+    # try:
+    #     driver.find_element(By.CLASS_NAME, 'loader-bar')
+    # except:
+    #     break
     if pcount == len(products):
         break
     pcount = len(products)
