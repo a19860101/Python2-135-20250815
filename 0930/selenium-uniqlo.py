@@ -17,6 +17,11 @@ search.click()
 
 time.sleep(3)
 
+# 捲動到特定位置
+q = driver.find_element(By.CSS_SELECTOR,'img[alt="刷台新Richart卡享3.3%"]')
+driver.execute_script("arguments[0].scrollIntoView(true);", q)
+time.sleep(10)
+
 # men = driver.find_element(By.XPATH, '//*[@id="hmall-container"]/div/div[1]/div[3]/div[2]/div[1]/span[2]')
 # men.click()
 
