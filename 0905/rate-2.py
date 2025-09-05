@@ -1,6 +1,5 @@
 import time
 
-from pytz import country_names
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -10,6 +9,13 @@ url = 'https://rate.bot.com.tw/xrt?Lang=zh-TW'
 
 driver.get(url)
 driver.maximize_window()
+
+reload = driver.find_element(By.CLASS_NAME, 'click_reload')
+
+reload.click()
+
+time.sleep(2)
+
 
 # us = driver.find_element(By.XPATH, '//*[@id="ie11andabove"]/div/table/tbody/tr[1]/td[3]')
 # jp = driver.find_element(By.XPATH, '//*[@id="ie11andabove"]/div/table/tbody/tr[8]/td[3]')
