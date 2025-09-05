@@ -18,13 +18,13 @@ search = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/main/div[1]/div[2]/div/
 
 print(select)
 
-# action = ActionChains(driver)
-# action.click(select).pause(2).click(month).pause(2).click(search).perform()
-#
-# time.sleep(5)
-#
-# driver.execute_script('window.scrollTo(0, 500)')
-#
-# time.sleep(10)
+action = ActionChains(driver)
+action.click(select).pause(2).click(month).pause(2).click(search).perform()
+
+time.sleep(5)
+
+driver.execute_script('window.scrollTo(0, 500)')
+
+time.sleep(10)
 
 
