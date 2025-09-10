@@ -4,16 +4,16 @@
 import re
 
 # 基本比對
-s = 'hello python !! hello Hello Python'
+# s = 'hello python !! hello Hello Python'
 # role = re.search('hello', s)
 # role = re.search('hello', s)
 # role = re.search('Hello123', s)
 # role = re.findall('hello', s)
-role = re.finditer('hello', s)
-print(role)
+# role = re.finditer('hello', s)
+# print(role)
 
-for r in role:
-    print(r)
+# for r in role:
+#     print(r)
 
 
 #
@@ -59,4 +59,16 @@ identity = 'a223456789'
 id_role = re.compile(r'^[A-Z][12][0-9]{8}$')
 id_result = id_role.search(identity)
 # print(id_result)
+
+
+s = 'h ello world'
+print(re.search(r'\w', s))
+print(re.finditer(r'\s', s))
+space = re.finditer(r'\s', s)
+
+for sp in space:
+    print(sp)
+    print(sp.span())
+
+
 
