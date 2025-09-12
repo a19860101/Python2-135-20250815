@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 url = 'https://member.lccnet.com.tw/signout/LearningRecord.aspx'
+# http://attend.lccnet.com.tw/TeamRecord.aspx
 driver = webdriver.Chrome()
 driver.get(url)
 action = ActionChains(driver)
