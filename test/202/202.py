@@ -12,3 +12,19 @@
 輸出說明
 將三個欄位的內容：sno、sna、tot，輸出至write.csv檔案，各欄位內容之間以一個半形逗號隔開
 """
+
+import xml.etree.ElementTree as ET
+import csv
+
+tree = ET.parse('./read.xml')
+root = tree.getroot()
+
+with open('./write.csv','a',encoding='utf-8',newline='')as c:
+    csvfile = csv.writer(c)
+
+    for item in root.iter('row'):
+        sno = item.find('sno').text
+        sna = item.find('sna').text
+        tot = item.find('tot').text
+
+        csvfile.writerow([sno,sna,tot])
