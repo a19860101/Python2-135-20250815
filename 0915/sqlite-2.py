@@ -17,10 +17,18 @@ sql_insert = '''
 INSERT INTO products (name, price, qty)VALUES(?,?,?)
 '''
 
-for i in range(10):
-    cursor.execute(sql_insert,('拿鐵',80,10))
+# for i in range(10):
+#     cursor.execute(sql_insert,('拿鐵',80,10))
 
-cursor.execute(sql_insert,('拿鐵',80,10))
+# cursor.execute(sql_insert,('拿鐵',80,10))
+
+datas = [
+    ('美式咖啡',60,10),
+    ('卡布奇諾',150,2),
+    ('焦糖瑪奇朵',220, 3)
+]
+
+cursor.executemany(sql_insert, datas)
 
 # name = input()
 # price = input()
