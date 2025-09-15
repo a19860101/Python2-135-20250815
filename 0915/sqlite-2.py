@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS products(
     qty INT
 )
 '''
-cursor.execute(sql_create_table)
-
+# cursor.execute(sql_create_table)
+# 新增單筆資料
 sql_insert = '''
 INSERT INTO products (name, price, qty)VALUES(?,?,?)
 '''
@@ -28,13 +28,30 @@ datas = [
     ('焦糖瑪奇朵',220, 3)
 ]
 
-cursor.executemany(sql_insert, datas)
+# 新增多筆資料
+# cursor.executemany(sql_insert, datas)
 
 # name = input()
 # price = input()
 # qty = input()
 # sql_insert_2 = f'INSERT INTO products (name, price, qty)VALUES({name},{price},{qty})'
 # cursor.execute(sql_insert_2)
+
+# 刪除資料
+# sql_delete = 'DELETE FROM products WHERE id = 5'
+# cursor.execute(sql_delete)
+
+# sql_delete = 'DELETE FROM products WHERE id = ?'
+# cursor.execute(sql_delete,'6')
+
+# cursor.execute('DELETE FROM products WHERE id = 8')
+
+# 更新資料
+sql_update = 'UPDATE products SET name=?,price=?,qty=? WHERE id=?'
+update_data = ('氣泡水',120,23,4)
+cursor.execute(sql_update, update_data)
+
+
 
 conn.commit()
 
