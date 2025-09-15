@@ -13,7 +13,25 @@ CREATE TABLE IF NOT EXISTS products(
     qty INT
 )
 '''
-cursor.execute(sql_create_table)
+
+sql_drop_column = '''
+ALTER TABLE products DROP COLUMN qty
+'''
+
+sql_add_column = '''
+ALTER TABLE products ADD COLUMN qty INT
+'''
+
+sql_rename_column = '''
+ALTER TABLE products RENAME name TO title
+'''
+
+sql_rename_table = '''
+ALTER TABLE qqq RENAME TO products
+
+'''
+
+cursor.execute(sql_rename_table)
 
 conn.close()
 # 主鍵
