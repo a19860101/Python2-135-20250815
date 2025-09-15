@@ -47,12 +47,26 @@ datas = [
 # cursor.execute('DELETE FROM products WHERE id = 8')
 
 # 更新資料
-sql_update = 'UPDATE products SET name=?,price=?,qty=? WHERE id=?'
-update_data = ('氣泡水',120,23,4)
-cursor.execute(sql_update, update_data)
+# sql_update = 'UPDATE products SET name=?,price=?,qty=? WHERE id=?'
+# update_data = ('氣泡水',120,23,4)
+# cursor.execute(sql_update, update_data)
+#
 
+# 查詢資料
+# sql_select = 'SELECT * FROM products'
+# sql_select = 'SELECT name FROM products'
+# sql_select = 'SELECT name,price FROM products'
+# sql_select = 'SELECT * FROM products WHERE price < 50'
+sql_select = 'SELECT * FROM products WHERE name = "紅茶"'
 
+cursor.execute(sql_select)
+products = cursor.fetchall()
 
-conn.commit()
+for p in products:
+    print(p)
+
+# print(products)
+
+# conn.commit()
 
 conn.close()
