@@ -13,19 +13,19 @@ CREATE TABLE IF NOT EXISTS products(
     qty INT
 )
 '''
-
+# 刪除欄位
 sql_drop_column = '''
 ALTER TABLE products DROP COLUMN qty
 '''
-
+# 新增欄位
 sql_add_column = '''
 ALTER TABLE products ADD COLUMN qty INT
 '''
-
+# 更改欄位名稱
 sql_rename_column = '''
 ALTER TABLE products RENAME name TO title
 '''
-
+# 更改資料表名稱
 sql_rename_table = '''
 ALTER TABLE qqq RENAME TO products
 
