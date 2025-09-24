@@ -12,9 +12,9 @@ img2 = cv2.resize(img2, (w,h), interpolation=cv2.INTER_NEAREST)
 
 # img2 = cv2.GaussianBlur(img2, (99,99), 3)
 
-# img = cv2.GaussianBlur(img, (99,99), 3)
+# img = cv2.GaussianBlur(img, (99,99), 10)
 
-# cv2.imshow('test 1',img)
+cv2.imshow('test 1',img)
 cv2.imshow('test 2',img2)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
