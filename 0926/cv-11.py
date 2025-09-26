@@ -52,3 +52,5 @@ for (x, y, w, h) in faces:
 cv2.imshow('Face Detection', img)
 cv2.waitKey(0)
 cv2.destroyWindow('Face Detection')
+
+# 字體下載 https://fonts.google.com/
