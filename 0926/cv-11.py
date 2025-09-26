@@ -22,28 +22,33 @@ faces = face_cascade.detectMultiScale(gray,
 
 print(faces)
 
-for (x,y,w,h) in faces:
-    print(x,y,w,h)
-    cv2.rectangle(img, (x,y), (x+w, y+h), (0,255,0), 2)
-    cv2.putText(img,
-                '大鼓祥平',
-                (x, y - 5 ),
-                cv2.FONT_HERSHEY_COMPLEX,
-                1,
-                (0, 255, 0),
-                1)
+# 使用 PIL 在指定位置加中文文字到 OpenCV 圖片
+def put_chinese_text_cv2(img, text, position, font_path, font_size, color=(0, 255, 0), thickness=1):
+    # 創建 PIL 圖像
+    img_pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    draw = ImageDraw.Draw(img_pil)
 
-cv2.imshow('Face Detection',img)
+    # 載入字體
+    font = ImageFont.truetype(font_path, font_size)
+
+    # 加文字
+    draw.text(position, text, font=font, fill=color)
+
+    # 轉換回 OpenCV 格式
+    return cv2.cvtColor(np.array(img_pil), cv2.COLOR_RGB2BGR)
+
+
+for (x, y, w, h) in faces:
+    print(x, y, w, h)
+    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    img = put_chinese_text_cv2(img,
+                               '大鼓祥平',
+                               (x, y - 21),
+                               './Huninn-Regular.ttf',
+                               16,
+                               (0, 255, 0),
+                               1)
+
+cv2.imshow('Face Detection', img)
 cv2.waitKey(0)
 cv2.destroyWindow('Face Detection')
-
-"""
-FONT_HERSHEY_SIMPLEX：正常大小無襯線字體、
-FONT_HERSHEY_PLAIN：小號無襯線字體、
-FONT_HERSHEY_DUPLEX：正常大小無襯線字體，比FONT_HERSHEY_SIMPLEX複雜一點、
-FONT_HERSHEY_COMPLEX：正常大小有襯線字體、
-FONT_HERSHEY_TRIPLEX：正常大小有襯線字體，比FONT_HERSHEY_COMPLEX複雜一點、
-FONT_HERSHEY_COMPLEX_SMALL：FONT_HERSHEY_COMPLEX的小號、
-FONT_HERSHEY_SCRIPT_SIMPLEX：手寫風格細體、
-FONT_HERSHEY_SCRIPT_COMPLEX：手寫風格粗體，
-"""
